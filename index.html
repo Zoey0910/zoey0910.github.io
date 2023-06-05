@@ -1,53 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>HTML Full-screen iframe (100% Height and Width)</title>
-    <style>
-        body {
-            margin: 0; /* Remove default margin */
-        }
+<title>Zazou | sensibilisation harcèlement</title>
+<style>
+    body {
+        margin: 0;
+    }
+    
+    iframe {      
+        display: block;
+        height: 100vh;
+        width: 100vw;
+        border: none;
+        background: lightyellow;
+    }
+</style>
+<script>
+    window.onload = function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        var isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
 
-        iframe {
-            display: block; /* iframes are inline by default */
-            height: 100vh; /* Set height to 100% of the viewport height */
-            width: 100vw; /* Set width to 100% of the viewport width */
-            border: none; /* Remove default border */
-            background: lightyellow; /* Just for styling */
-            aspect-ratio: 16 / 9;
+        if (isMobile) {
+            var mobileUrl = "https://zoegoffinon.wixsite.com/zazou?mobile=true"; // Ajoutez le paramètre "?mobile=true" pour la version mobile
+            document.querySelector("iframe").setAttribute("src", mobileUrl);
         }
-    </style>
+    }
+</script>
 </head>
 <body>
-    <iframe id="wix"></iframe>
-
-    <script>
-        function resizeIframe() {
-            var iframe = document.getElementById('wix');
-            iframe.style.height = window.innerHeight + 'px';
-            iframe.style.width = window.innerWidth + 'px';
-        }
-
-        // Call the resizeIframe function whenever the window size changes
-        window.addEventListener('resize', resizeIframe);
-
-        // Initial call to resizeIframe function
-        resizeIframe();
-
-        // Get the user agent of the current device
-        var userAgent = navigator.userAgent;
-
-        // Modify the iframe's source URL to include the user agent as a query parameter
-        var iframeSrc = "https://zoegoffinon.wixsite.com/zazou?userAgent=" + encodeURIComponent(userAgent);
-        document.getElementById('wix').src = iframeSrc;
-
-        // Add the "device-mobile-optimized" class to the body tag within the iframe
-        var addClassScript = `
-            var iframeBody = document.querySelector('#wix').contentDocument.body;
-            iframeBody.classList.add('device-mobile-optimized');
-        `;
-        var scriptElement = document.createElement('script');
-        scriptElement.appendChild(document.createTextNode(addClassScript));
-        document.getElementById('wix').contentWindow.document.head.appendChild(scriptElement);
-    </script>
+    <iframe src="https://zoegoffinon.wixsite.com/zazou"></iframe>
 </body>
 </html>
