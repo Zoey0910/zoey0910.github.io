@@ -39,6 +39,15 @@
         // Modify the iframe's source URL to include the user agent as a query parameter
         var iframeSrc = "https://zoegoffinon.wixsite.com/zazou?userAgent=" + encodeURIComponent(userAgent);
         document.getElementById('wix').src = iframeSrc;
+
+        // Add the "device-mobile-optimized" class to the body tag within the iframe
+        var addClassScript = `
+            var iframeBody = document.querySelector('#wix').contentDocument.body;
+            iframeBody.classList.add('device-mobile-optimized');
+        `;
+        var scriptElement = document.createElement('script');
+        scriptElement.appendChild(document.createTextNode(addClassScript));
+        document.getElementById('wix').contentWindow.document.head.appendChild(scriptElement);
     </script>
 </body>
 </html>
