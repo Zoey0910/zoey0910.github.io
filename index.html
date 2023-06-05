@@ -16,14 +16,25 @@
     }
 </style>
 <script>
+    function adjustIframeHeight() {
+        var iframe = document.querySelector("iframe");
+        iframe.style.height = window.innerHeight + "px";
+    }
+
     window.onload = function() {
+        adjustIframeHeight();
+        
         var userAgent = navigator.userAgent.toLowerCase();
         var isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
 
         if (isMobile) {
-            var mobileUrl = "https://zoegoffinon.wixsite.com/zazou?mobile=true"; // Ajoutez le paramètre "?mobile=true" pour la version mobile
+            var mobileUrl = "https://zoegoffinon.wixsite.com/zazou?mobile=true";
             document.querySelector("iframe").setAttribute("src", mobileUrl);
         }
+    }
+
+    window.onresize = function() {
+        adjustIframeHeight();
     }
 </script>
 </head>
