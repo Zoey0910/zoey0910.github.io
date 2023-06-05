@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <iframe id="wix" src="https://zoegoffinon.wixsite.com/zazou"></iframe>
+    <iframe id="wix"></iframe>
 
     <script>
         function resizeIframe() {
@@ -32,6 +32,13 @@
 
         // Initial call to resizeIframe function
         resizeIframe();
+
+        // Get the user agent of the current device
+        var userAgent = navigator.userAgent;
+
+        // Modify the iframe's source URL to include the user agent as a query parameter
+        var iframeSrc = "https://zoegoffinon.wixsite.com/zazou?userAgent=" + encodeURIComponent(userAgent);
+        document.getElementById('wix').src = iframeSrc;
     </script>
 </body>
 </html>
