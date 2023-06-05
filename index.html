@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Zazou | sensibilisation harcèlement</title>
+    <title>HTML Full-screen iframe (100% Height and Width)</title>
     <style>
         body {
             margin: 0; /* Remove default margin */
@@ -15,18 +15,23 @@
             background: lightyellow; /* Just for styling */
             aspect-ratio: 16 / 9;
         }
-
-        @media only screen and (max-width: 600px) {
-            /* Styles for screens up to 600px wide */
-            iframe {
-                aspect-ratio: 1 / 1; /* Set a square aspect ratio for mobile */
-            }
-        }
     </style>
 </head>
 <body>
-<iframe src="https://zoegoffinon.wixsite.com/zazou"></iframe>
-</body>
-</html>
+    <iframe id="wix" src="https://zoegoffinon.wixsite.com/zazou"></iframe>
 
+    <script>
+        function resizeIframe() {
+            var iframe = document.getElementById('wix');
+            iframe.style.height = window.innerHeight + 'px';
+            iframe.style.width = window.innerWidth + 'px';
+        }
+
+        // Call the resizeIframe function whenever the window size changes
+        window.addEventListener('resize', resizeIframe);
+
+        // Initial call to resizeIframe function
+        resizeIframe();
+    </script>
+</body>
 </html>
