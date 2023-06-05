@@ -9,16 +9,21 @@
     
     iframe {      
         display: block;
-        height: 100vh;
-        width: 100vw;
         border: none;
         background: lightyellow;
+    }
+    
+    @media (max-width: 600px) { /* Définissez la largeur maximale pour la version mobile */
+        iframe {
+            height: 883px;
+            width: 318px;
+        }
     }
 </style>
 <script>
     function adjustIframeHeight() {
         var iframe = document.querySelector("iframe");
-        iframe.style.height = window.innerHeight + "px";
+        iframe.style.height = "100%"; /* Rétablir la hauteur à 100% */
     }
 
     window.onload = function() {
@@ -30,6 +35,9 @@
         if (isMobile) {
             var mobileUrl = "https://zoegoffinon.wixsite.com/zazou?mobile=true";
             document.querySelector("iframe").setAttribute("src", mobileUrl);
+            
+            var iframe = document.querySelector("iframe");
+            iframe.classList.add("mobile-iframe"); /* Ajouter une classe pour la version mobile */
         }
     }
 
