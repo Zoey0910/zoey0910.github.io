@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>HTML Full-screen iframe (100% Height and Width)</title>
-<style>
-    body{
-        margin: 0; /* Remove default margin */
-    }
-    iframe{      
-        display: block;  /* iframes are inline by default */   
-        height: 100vh;  /* Set height to 100% of the viewport height */   
-        width: 100vw;  /* Set width to 100% of the viewport width */     
-        border: none; /* Remove default border */
-        background: lightyellow; /* Just for styling */
-        aspect-ratio: 16 / 9;
-    }
-</style>
+    <title>HTML Full-screen iframe (100% Height and Width)</title>
+    <style>
+        body {
+            margin: 0; /* Remove default margin */
+        }
+
+        iframe {
+            display: block; /* iframes are inline by default */
+            height: 100vh; /* Set height to 100% of the viewport height */
+            width: 100vw; /* Set width to 100% of the viewport width */
+            border: none; /* Remove default border */
+            background: lightyellow; /* Just for styling */
+            aspect-ratio: 16 / 9;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* Styles for screens up to 600px wide */
+            iframe {
+                aspect-ratio: 1 / 1; /* Set a square aspect ratio for mobile */
+            }
+        }
+    </style>
 </head>
 <body>
-    <iframe src="https://zoegoffinon.wixsite.com/zazou"></iframe>
+<iframe src="https://zoegoffinon.wixsite.com/zazou"></iframe>
 </body>
+</html>
+
 </html>
